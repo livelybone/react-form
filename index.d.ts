@@ -1,4 +1,11 @@
-import { Form, FormItem, FormItemsData, FormOptions } from '@livelybone/form'
+import {
+  Form,
+  FormItem,
+  FormItemsData,
+  FormOptions,
+  TupleToUnion,
+} from '@livelybone/form'
+import { ChangeEvent } from 'react'
 
 export * from '@livelybone/form'
 
@@ -16,4 +23,19 @@ declare function useForm<
   >,
 ): Form<Items, ReturnTypeOfSubmit>
 
-export { useForm }
+declare function isAllItemFilled<
+  FormItems extends FormItem<any, any, any>[],
+  Options extends FormOptions<any, any>
+>(form: Form<FormItems, Options>): boolean
+
+declare function inputItemChange<
+  FormItems extends FormItem<any, any, any>[],
+  Options extends FormOptions<any, any>,
+  Evt extends ChangeEvent<any>
+>(
+  form: Form<FormItems, Options>,
+  name: TupleToUnion<FormItems, 'name'>,
+  ev: Evt,
+): void
+
+export { inputItemChange, isAllItemFilled, useForm }
