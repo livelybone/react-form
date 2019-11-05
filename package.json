@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/react-form",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A react from controller",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
@@ -109,7 +109,7 @@
     ]
   },
   "dependencies": {
-    "@livelybone/form": "^2.2.0",
+    "@livelybone/form": "^2.2.1",
     "@livelybone/use-force-update": "^1.0.1"
   }
 }

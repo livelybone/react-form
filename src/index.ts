@@ -6,7 +6,7 @@ import {
   TupleToUnion,
 } from '@livelybone/form'
 import useForceUpdate from '@livelybone/use-force-update'
-import { ChangeEvent, useRef } from 'react'
+import { ChangeEvent, useLayoutEffect, useState } from 'react'
 
 export * from '@livelybone/form'
 
@@ -23,15 +23,17 @@ export function useForm<
     ReturnTypeOfSubmit | FormItemsData<Items>
   >,
 ) {
-  const [, forceUpdate] = useForceUpdate()
-  const form = useRef(
-    new Form(formItems, {
-      ...options,
-      componentUpdateFn: forceUpdate,
-    }),
+  const [, componentUpdateFn] = useForceUpdate()
+
+  const [form] = useState(
+    () => new Form(formItems, { ...options, componentUpdateFn }),
   )
 
-  return form.current
+  useLayoutEffect(() => {
+    form.updateOptions({ ...options, componentUpdateFn })
+  }, [form, options, componentUpdateFn])
+
+  return form
 }
 
 export function isAllItemFilled<
