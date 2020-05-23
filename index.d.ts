@@ -14,13 +14,10 @@ export * from '@livelybone/form'
  * */
 declare function useForm<
   Items extends FormItem<any, any, any>[],
-  ReturnTypeOfSubmit extends any
+  ReturnTypeOfSubmit extends any = FormItemsData<Items>
 >(
   formItems: Items,
-  options?: FormOptions<
-    FormItemsData<Items>,
-    ReturnTypeOfSubmit | FormItemsData<Items>
-  >,
+  options?: FormOptions<FormItemsData<Items>, ReturnTypeOfSubmit>,
 ): Form<Items, ReturnTypeOfSubmit>
 
 declare function isAllItemFilled<

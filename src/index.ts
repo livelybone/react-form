@@ -15,13 +15,10 @@ export * from '@livelybone/form'
  * */
 export function useForm<
   Items extends FormItem<any, any, any>[],
-  ReturnTypeOfSubmit extends any
+  ReturnTypeOfSubmit extends any = FormItemsData<Items>
 >(
   formItems: Items,
-  options?: FormOptions<
-    FormItemsData<Items>,
-    ReturnTypeOfSubmit | FormItemsData<Items>
-  >,
+  options?: FormOptions<FormItemsData<Items>, ReturnTypeOfSubmit>,
 ) {
   const [, componentUpdateFn] = useForceUpdate()
 
