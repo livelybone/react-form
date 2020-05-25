@@ -33,10 +33,7 @@ export function useForm<
   return form
 }
 
-export function isAllItemFilled<
-  Items extends FormItem<any, any, any>[],
-  ReturnTypeOfSubmit extends any = FormItemsData<Items>
->(form: Form<Items, ReturnTypeOfSubmit>) {
+export function isAllItemFilled<Items extends any[]>(form: Form<Items, any>) {
   return form.items.every(
     item =>
       !item.required ||
@@ -45,10 +42,9 @@ export function isAllItemFilled<
 }
 
 export function inputItemChange<
-  Items extends FormItem<any, any, any>[],
-  ReturnTypeOfSubmit extends any = FormItemsData<Items>,
+  Items extends any[],
   Evt extends ChangeEvent<any> = ChangeEvent<any>
->(form: Form<Items, ReturnTypeOfSubmit>, name: FormName<Items>, ev: Evt) {
+>(form: Form<Items, any>, name: FormName<Items>, ev: Evt) {
   form.itemChange(name, ev.target.value)
   ev.target.value = form.data[name] || ''
 }

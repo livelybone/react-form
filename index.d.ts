@@ -20,15 +20,13 @@ declare function useForm<
   options?: FormOptions<FormItemsData<Items>, ReturnTypeOfSubmit>,
 ): Form<Items, ReturnTypeOfSubmit>
 
-declare function isAllItemFilled<
-  Items extends FormItem<any, any, any>[],
-  ReturnTypeOfSubmit extends any = FormItemsData<Items>
->(form: Form<Items, ReturnTypeOfSubmit>): boolean
+declare function isAllItemFilled<Items extends any[]>(
+  form: Form<Items, any>,
+): boolean
 
 declare function inputItemChange<
-  Items extends FormItem<any, any, any>[],
-  ReturnTypeOfSubmit extends any = FormItemsData<Items>,
+  Items extends any[],
   Evt extends ChangeEvent<any> = ChangeEvent<any>
->(form: Form<Items, ReturnTypeOfSubmit>, name: FormName<Items>, ev: Evt): void
+>(form: Form<Items, any>, name: FormName<Items>, ev: Evt): void
 
 export { inputItemChange, isAllItemFilled, useForm }
