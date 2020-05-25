@@ -2,8 +2,8 @@ import {
   Form,
   FormItem,
   FormItemsData,
+  FormName,
   FormOptions,
-  TupleToUnion,
 } from '@livelybone/form'
 import { ChangeEvent } from 'react'
 
@@ -21,18 +21,14 @@ declare function useForm<
 ): Form<Items, ReturnTypeOfSubmit>
 
 declare function isAllItemFilled<
-  FormItems extends FormItem<any, any, any>[],
-  Options extends FormOptions<any, any>
->(form: Form<FormItems, Options>): boolean
+  Items extends FormItem<any, any, any>[],
+  ReturnTypeOfSubmit extends any = FormItemsData<Items>
+>(form: Form<Items, ReturnTypeOfSubmit>): boolean
 
 declare function inputItemChange<
-  FormItems extends FormItem<any, any, any>[],
-  Options extends FormOptions<any, any>,
-  Evt extends ChangeEvent<any>
->(
-  form: Form<FormItems, Options>,
-  name: TupleToUnion<FormItems, 'name'>,
-  ev: Evt,
-): void
+  Items extends FormItem<any, any, any>[],
+  ReturnTypeOfSubmit extends any = FormItemsData<Items>,
+  Evt extends ChangeEvent<any> = ChangeEvent<any>
+>(form: Form<Items, ReturnTypeOfSubmit>, name: FormName<Items>, ev: Evt): void
 
 export { inputItemChange, isAllItemFilled, useForm }

@@ -2,8 +2,8 @@ import {
   Form,
   FormItem,
   FormItemsData,
+  FormName,
   FormOptions,
-  TupleToUnion,
 } from '@livelybone/form'
 import useForceUpdate from '@livelybone/use-force-update'
 import { ChangeEvent, useLayoutEffect, useState } from 'react'
@@ -34,9 +34,9 @@ export function useForm<
 }
 
 export function isAllItemFilled<
-  FormItems extends FormItem<any, any, any>[],
-  Options extends FormOptions<any, any>
->(form: Form<FormItems, Options>) {
+  Items extends FormItem<any, any, any>[],
+  ReturnTypeOfSubmit extends any = FormItemsData<Items>
+>(form: Form<Items, ReturnTypeOfSubmit>) {
   return form.items.every(
     item =>
       !item.required ||
@@ -45,14 +45,10 @@ export function isAllItemFilled<
 }
 
 export function inputItemChange<
-  FormItems extends FormItem<any, any, any>[],
-  Options extends FormOptions<any, any>,
-  Evt extends ChangeEvent<any>
->(
-  form: Form<FormItems, Options>,
-  name: TupleToUnion<FormItems, 'name'>,
-  ev: Evt,
-) {
+  Items extends FormItem<any, any, any>[],
+  ReturnTypeOfSubmit extends any = FormItemsData<Items>,
+  Evt extends ChangeEvent<any> = ChangeEvent<any>
+>(form: Form<Items, ReturnTypeOfSubmit>, name: FormName<Items>, ev: Evt) {
   form.itemChange(name, ev.target.value)
   ev.target.value = form.data[name] || ''
 }
