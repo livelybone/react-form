@@ -8,8 +8,6 @@ import {
 import useForceUpdate from '@livelybone/use-force-update'
 import { ChangeEvent, useLayoutEffect, useState } from 'react'
 
-export * from '@livelybone/form'
-
 /**
  * Hook
  * */

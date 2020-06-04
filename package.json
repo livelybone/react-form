@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/react-form",
-  "version": "1.5.2",
+  "version": "2.0.0",
   "description": "A react from controller",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
