@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/react-form",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A react from controller",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
@@ -86,7 +86,9 @@
     "rollup-plugin-license": "^0.8.1",
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-uglify": "^6.0.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "@livelybone/form": "^2.10.1",
+    "@livelybone/use-force-update": "^1.0.1"
   },
   "config": {
     "commitizen": {
@@ -108,7 +110,7 @@
       "git update-index --again"
     ]
   },
-  "dependencies": {
+  "peerDependencies": {
     "@livelybone/form": "^2.10.1",
     "@livelybone/use-force-update": "^1.0.1"
   }
